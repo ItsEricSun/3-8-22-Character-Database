@@ -6,7 +6,7 @@ public class DoublyLinkedList<E> implements Iterable<E>{
 	private Node<E> head = null; 
 	private Node<E> tail = null; 
 	
-	private class Node<E> {
+	public class Node<E> {
 		E data;
 		Node<E> next;
 		Node<E> prev;
@@ -34,6 +34,7 @@ public class DoublyLinkedList<E> implements Iterable<E>{
 			last.next = new_node;
 			tail = new_node;
 		}
+//		((Character) data).getData();
 	}
 	
 	public Node<E> getHead() {
@@ -103,13 +104,13 @@ public class DoublyLinkedList<E> implements Iterable<E>{
 		Node<E> currNode = head;
 		System.out.print("\nForwards: ");
 		while (currNode != null) {
-			System.out.print(currNode.data + " ");
+			System.out.print(((Character) currNode.data).d + " ");
 			currNode = currNode.next;
 		}
 		currNode = tail;
 		System.out.print(" Backwards: ");
 		while (currNode != null) {
-			System.out.print(currNode.data + " ");
+			System.out.print(((Character) currNode.data).d + " ");
 			currNode = currNode.prev;
 		}
 	}
