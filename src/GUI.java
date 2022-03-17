@@ -84,6 +84,26 @@ public class GUI extends GBFrame {
 		add2Button = addButton("Add", 7,2,1,1);
 		frm.validate();
 	}
+	
+	public void modify() {
+		frm.getContentPane().removeAll();
+		frm.setSize(500, 250);
+		frm.repaint();
+		JLabel label = addLabel("Modify character:", 1,1,1,1);
+		JLabel nameLabel = addLabel("Name", 2,1,1,1);
+		nameField = addTextField(c.name, 2,2,1,1);
+		JLabel roleLabel = addLabel("Class", 3,1,1,1);
+		roleField = addTextField(c.role, 3,2,1,1);
+		JLabel levelLabel = addLabel("Level", 4,1,1,1);
+		levelField = addTextField(c.level, 4,2,1,1);
+		JLabel abilityLabel = addLabel("Special Ability", 5,1,1,1);
+		abilityField = addTextField(c.ability, 5,2,1,1);
+		JLabel weaknessLabel = addLabel("Weakness (if none, leave blank)", 6,1,1,1);
+		weaknessField = addTextField(c.weakness, 6,2,1,1);
+		backButton = addButton("Back", 7,1,1,1);
+		modify2Button = addButton("Modify", 7,2,1,1);
+		frm.validate();
+	}
 	/*
 	public void initMainMenu() {
 		outputArea = addTextArea("", 1, 1, 1, 6);
@@ -269,6 +289,42 @@ public class GUI extends GBFrame {
 			reachEnd();
 			mainMenu();
 			
+		} else if(buttonObj == modifyButton) {
+			modify();
+		} else if(buttonObj == modify2Button) {
+			String name = nameField.getText();
+			String role = roleField.getText();
+			String level = levelField.getText();
+			String ability = abilityField.getText();
+			String weakness = weaknessField.getText();
+			if(name.equals("")) {
+				messageBox("Error: Please Enter Name");
+				return;
+			} else if(role.equals("")) {
+				messageBox("Error: Please Enter Class");
+				return;
+			} else if(level.equals("")) {
+				messageBox("Error: Please Enter Level");
+				return;
+			} else if(ability.equals("")) {
+				messageBox("Error: Please Enter Ability");
+				return;
+			}
+			Character x = new Character(name, role, level, ability, weakness);
+			it.set(x);
+			c = x;
+			mainMenu();
+			
+		} else if(buttonObj == removeButton) {
+			it.remove();
+			if(it.hasNext()) {
+				c = it.next();
+			} else if(it.hasPrevious()) {
+				c = it.previous();
+			} else if(characters.size() == 1) {
+				c = characters.getHead().data;
+			}
+			mainMenu();
 		}
 	}
 	
