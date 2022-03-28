@@ -316,15 +316,18 @@ public class GUI extends GBFrame {
 			mainMenu();
 			
 		} else if(buttonObj == removeButton) {
-			it.remove();
-			if(it.hasNext()) {
-				c = it.next();
-			} else if(it.hasPrevious()) {
-				c = it.previous();
-			} else if(characters.size() == 1) {
-				c = characters.getHead().data;
+			if(characters.size() > 1) {
+				it.remove();
+				if(it.hasNext()) {
+					c = it.next();
+				} else if(it.hasPrevious()) {
+					c = it.previous();
+				} else if(characters.size() == 1) {
+					c = characters.getHead().data;
+				}
+				mainMenu();
+
 			}
-			mainMenu();
 		}
 	}
 	
